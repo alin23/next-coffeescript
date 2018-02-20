@@ -1,0 +1,16 @@
+{
+  "name": "next-coffeescript",
+  "version": "1.0.0",
+  "description": "Integrate Coffeescript with Next.js",
+  "main": "index.js",
+  "repository": "alin23/next-coffeescript",
+  "author": "Alin Panaitiu",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "coffee-loader": "^0.9.0"
+  },
+  "peerDependencies": {
+    "coffeescript": "^2.2.1"
+  }
+}
