@@ -23,11 +23,12 @@ module.exports = (nextConfig = {}) => {
             if (dev && !isServer) {
                 config.module.rules.push({
                     test: /\.(coffee)$/,
-                    loader: 'hot-self-accept-loader',
-                    include: [path.join(dir, 'pages')],
-                    options: {
-                        extensions: /\.(coffee)$/,
-                    },
+                    include: defaultLoaders.hotSelfAccept.options.include,
+                    use: Object.assign({}, defaultLoaders.hotSelfAccept, {
+                        options: Object.assign({}, defaultLoaders.hotSelfAccept.options, {
+                            extensions: /\.(coffee)$/,
+                        }),
+                    }),
                 })
             }
 
