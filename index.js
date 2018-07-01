@@ -20,16 +20,17 @@ module.exports = (nextConfig = {}) => {
 
             config.resolve.extensions.push('.coffee')
 
-            if (dev && !isServer) {
-                config.module.rules.push({
-                    test: /\.(coffee)$/,
-                    include: defaultLoaders.hotSelfAccept.options.include,
-                    use: Object.assign({}, defaultLoaders.hotSelfAccept, {
-                        options: Object.assign({}, defaultLoaders.hotSelfAccept.options, {
+            if (!defaultLoaders.hotSelfAccept) {
+                if (dev && !isServer) {
+                    config.module.rules.push({
+                        test: /\.(coffee)$/,
+                        loader: 'hot-self-accept-loader',
+                        include: [path.join(dir, 'pages')],
+                        options: {
                             extensions: /\.(coffee)$/,
-                        }),
-                    }),
-                })
+                        },
+                    })
+                }
             }
 
             config.module.rules.push({
